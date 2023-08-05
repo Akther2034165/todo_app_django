@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container w-50">
+    <h3 class="text-center text-uppercase display-4 fs-3 mt-3">list of TODOS</h2>
+        <hr>
+        {% if data %}
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">TODO</th>
+                    <th scope="col">DATE</th>
+                    <th scope="col">ACTION</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in data %}
+                <tr>
+                    <th scope="row">{{item.id}}</th>
+                    <td>{{item.todo}}</td>
+                    <td>{{item.todate}}</td>
+                    <td>
+                        <a href="{% url 'edit_todos' id=item.id %}"
+                            class="text-danger-emphasis text-decoration-none fs-sm fw-normal">EDIT</a>
+                        /
+                        <a href="{% url 'delete_todos' id=item.id %}"
+                            class="text-danger text-decoration-none fs-sm fw-normal">DELETE</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% else %}
+        <h3 class="text-start text-capitalize display-4 fs-4 mt-3">Opps!! No todos availabe</h2>
+            {% endif %}
+</div>
+{% endblock %}

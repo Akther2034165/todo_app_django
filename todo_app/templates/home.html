@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% load crispy_forms_tags %}
+<h1 class="text-center text-uppercase display-4 fs-2 mt-4">Welcome to todo app</h1>
+<div class="container w-50 border border-1 rounded mt-3 bg-secondary-subtle">
+    <div class="p-4 ">
+        <h1 class="text-center text-uppercase display-4 fs-3">Add todos</h1>
+        <form method="post">
+            {% csrf_token %}
+            {{form|crispy}}
+            <input type="submit" value="submit" class="btn btn-light text-uppercase fw-medium">
+        </form>
+    </div>
+</div>
+
+{% endblock %}
