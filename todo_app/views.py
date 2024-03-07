@@ -15,7 +15,7 @@ def home(request):
 
 def all_todos(request):
     todo = TodoStoreModel.objects.all()
-    return render(request,'all_todos.html',{'data':todo})
+    return render(request,'all_todos.html',{'todo':todo})
 
 def edit_todos(request,id):
     todo = TodoStoreModel.objects.get(pk=id)
